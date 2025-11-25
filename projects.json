@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Diseño de Camisa Calefactora (Banda) de Mica/Nicrom para Reactor Químico",
+    "category": "Circuitos Analógicos",
+    "technologies": [
+      "Aislante de Mica",
+      "Resistencia Nicrom",
+      "Carcasa de Aluminio",
+      "Control de Fase (Dimmer)",
+      "Monitoreo Digital de Temperatura"
+    ],
+    "date": "2024-09",
+    "images": [
+      "./images/proj_1764028842571_0.jpg",
+      "./images/proj_1764028842571_1.jpg",
+      "./images/proj_1764028842571_2.jpg"
+    ],
+    "symptoms": "Se requería un sistema de calentamiento externo para un reactor químico cilíndrico de laboratorio. Requerimientos:\n\nElevada densidad de potencia (aprox. 500W) en un espacio reducido.\n\nTransferencia térmica eficiente por contacto directo con las paredes del reactor.\n\nAislación eléctrica robusta capaz de soportar altas temperaturas operativas.\n\nRegulación de potencia variable para controlar la rampa de calentamiento.",
+    "technicalSheet": "Tipo: Resistencia de Banda (Band Heater) tipo Sándwich.\n\nPotencia Nominal: 500W (Potencia efectiva medida: ~450W).\n\nElemento Resistivo: Cinta/Alambre de Nicrom.\n\nDieléctrico/Aislante: Láminas de Mica mineral (alta rigidez dieléctrica y estabilidad térmica).\n\nCarcasa: Aluminio (para distribución uniforme del calor y sujeción mecánica).\n\nControl: Lazo abierto mediante Dimmer (recorte de fase) + Monitoreo digital independiente.",
+    "repairProcess": "Diseño del Núcleo: Se configuró un \"sándwich\" de materiales.\n\nCapa interna: Lámina de mica en contacto con el cilindro del reactor (aislación eléctrica, conducción térmica).\n\nNúcleo: Bobinado plano de alambre de Nicrom, calculado para 500W.\n\nCapa externa: Lámina de mica superior para cerrar el aislamiento.\n\nEncapsulado: Todo el conjunto se prensó dentro de una carcasa de aluminio curvada a medida. El aluminio cumple la doble función de proteger mecánicamente la mica (que es frágil) y homogeneizar la temperatura alrededor del reactor para evitar puntos calientes.\n\nSistema de Control:\n\nSe implementó una caja blanca con un Dimmer para regular la tensión eficaz entregada a la resistencia (0-100%).\n\nSe añadió una caja negra con un display digital conectado a una termocupla/sensor para monitorear la temperatura del proceso en tiempo real (feedback visual para el operador).\n\nMontaje: El sistema se montó sobre un agitador magnético, permitiendo calentar y mezclar simultáneamente.",
+    "details": "La construcción tipo \"sándwich\" con mica permite alcanzar temperaturas mucho más altas que los aislamientos plásticos o de silicona. La discrepancia entre los 500W teóricos y los 450W reales suele deberse a la variación de la resistencia del Nicrom con la temperatura o a caídas de tensión en la red, pero 450W es una potencia excelente para ese volumen de reactor.",
+    "specifications": "450W Reales | Aislación Mica | Carcasa Aluminio.",
+    "challenges": "Manipulación de la mica (material quebradizo) y prensado uniforme del sándwich.",
+    "results": "Calentamiento rápido y controlado para reacciones químicas.",
+    "id": 1764028842571
+  },
+  {
+    "title": "Sistema de Calentamiento y Recirculación para Planta Piloto de Extracción de Aceite",
+    "category": "Otro",
+    "technologies": [
+      "Controlador PID",
+      "Relé de Estado Sólido (SSR)",
+      "Resistencia de Inmersión",
+      "Acero Inoxidable",
+      "Polipropileno (PP)"
+    ],
+    "date": "2025-04",
+    "images": [
+      "./images/proj_1764028294413_0.jpg",
+      "./images/proj_1764028294413_1.jpg",
+      "./images/proj_1764028294413_2.jpg",
+      "./images/proj_1764028294413_3.jpg",
+      "./images/proj_1764028294413_4.png"
+    ],
+    "symptoms": "Se requería implementar un sistema de calentamiento de agua con control preciso de temperatura (setpoint hasta 100°C) para el proceso de extracción de aceite de uva en una planta piloto. Requerimientos:\n\nReservorio inoxidable capaz de soportar ebullición, envuelto en aislante térmico para evitar pérdidas innecesarias de energía.\n\nAislación eléctrica crítica (seguridad ante contacto con fluido).\n\nRecirculación del fluido caloportador hacia el reactor de uvas.\n\nIntegración en tablero de control existente.",
+    "technicalSheet": "Fluido de Trabajo: Agua Destilada (para minimizar conductividad eléctrica en caso de falla).\n\nRango de Trabajo: Ambiente a 100°C.\n\nPotencia: Resistencia blindada comercial (monofásica).\n\nActuación: Relé de Estado Sólido (SSR) para control PWM/PID.\n\nAislación de Conexiones: Ductos de inmersión fabricados en Polipropileno (PP) termosellado.\n\nSeguridad: Puesta a tierra (PAT) en chasis, Gabinetes estancos IP65.",
+    "repairProcess": "Adecuación del Reservorio: Se utilizó un tanque de acero inoxidable como caldera principal.\n\nIngeniería de la Resistencia:\n\nSe diseñó un sistema de \"montaje suspendido\" desde la tapa para la resistencia calefactora.\n\nPara la alimentación eléctrica sumergida, se fabricaron bajadas utilizando cañerías y accesorios de Polipropileno (PP) roscado y sellado.\n\nLos cables viajan por el interior de estos caños secos, garantizando que no haya contacto directo con el agua.\n\nEstanqueidad y Seguridad:\n\nLos caños de PP desembocan en una caja de paso IP65 montada sobre la tapa del tanque.\n\nUso de prensacables para la salida hacia el tablero, asegurando que el vapor no ingrese a la zona de conexiones.\n\nConexión de puesta a tierra al chasis metálico.\n\nLógica de Control:\n\nInstalación de un controlador de temperatura comercial en el tablero principal.\n\nEl controlador comanda un SSR (Solid State Relay), permitiendo un control fino de la temperatura sin el desgaste mecánico de los contactores tradicionales.\n\nSistema Hidráulico: Interconexión con bombas de recirculación para llevar el agua caliente desde el reservorio hacia el recipiente de la materia prima (uvas).",
+    "details": "El uso de agua destilada añade una capa extra de seguridad (baja conductividad) en caso de una hipotética falla en los sellos de PP. La configuración vertical de la resistencia facilita el mantenimiento, ya que todo el conjunto eléctrico se retira levantando la tapa, sin necesidad de vaciar el tanque por drenajes inferiores.",
+    "specifications": "Control PID + SSR | Inmersión en PP | Hasta 100°C.",
+    "challenges": "Lograr estanqueidad total en las conexiones sumergidas usando materiales estándar (PP).",
+    "results": "Sistema térmico estable integrado exitosamente a la planta piloto.",
+    "id": 1764028294413
+  },
+  {
+    "title": "Batería Recargable Li-Ion para Maglite 4 Celdas",
+    "category": "Circuitos Analógicos",
+    "technologies": [
+      "Celdas Li-Ion 18650",
+      "BMS",
+      "Módulo de Carga",
+      "Regulación Lineal",
+      "Impresión 3D",
+      "Fusion 360"
+    ],
+    "date": "2025-01",
+    "images": [
+      "./images/proj_1764027532122_0.jpg",
+      "./images/proj_1764027532122_1.jpg",
+      "./images/proj_1764027532122_2.jpg",
+      "./images/proj_1764027532122_3.jpg",
+      "./images/proj_1764027532122_4.jpg"
+    ],
+    "symptoms": "Se buscaba modernizar una linterna Maglite de 4 elementos (originalmente alimentada por pilas alcalinas desechables, 6V nominales) para reducir costos operativos y desperdicios. Requerimientos:\n\nSustitución directa del stack de pilas originales.\n\nSistema recargable vía USB-C integrado.\n\nTensión de salida estable de 6V para proteger el LED original.\n\nProtección de carga y descarga para las celdas de litio.",
+    "technicalSheet": "Almacenamiento: 2 celdas 18650 en configuración 2S (7.4V nominal / 8.4V máx).\n\nGestión de Batería: BMS 2S para balanceo y corte por bajo/sobre voltaje.\n\nCarga: Módulo DDTCCRUB 2S (entrada USB-C, carga balanceada).\n\nEtapa de Salida: Regulador lineal LM7805 configurado con resistencia en referencia de tierra (GND lift) para obtener 6V estables.\n\nCarcasa: Diseño cilíndrico impreso en 3D que emula las dimensiones del compartimento de pilas original.",
+    "repairProcess": "Diseño CAD: Modelado en Fusion 360 de un cartucho cilíndrico que contiene las celdas y la electrónica, respetando el diámetro interno y largo del cuerpo de la Maglite.\n\nElectrónica de Potencia:\n\nConexión de dos baterías 18650 en serie.\n\nIntegración del BMS 2S para seguridad del pack.\n\nInstalación del módulo cargador DDTCCRUB con puerto USB-C accesible desde la tapa superior.\n\nRegulación de Tensión: Para adaptar los 7.4V-8.4V de las baterías a los 6V requeridos por la lámpara, se implementó un regulador LM7805 con una resistencia en su pin de tierra (GND), elevando la tensión de referencia para obtener una salida de 6V constantes y disipar el exceso de tensión en forma de calor.\n\nContactos Mecánicos:\n\nNegativo: Uso de una arandela metálica en la base para hacer contacto con el resorte/carcasa de la linterna.\n\nPositivo: Pieza de aluminio adaptada en el extremo superior.\n\nEnsamblaje: Impresión de la carcasa en 3D, cableado interno y cierre de tapas a presión/rosca.",
+    "details": "El diseño \"todo en uno\" permite sacar el cartucho completo para cargarlo vía USB-C y volver a colocarlo como si fuera una pila gigante. \nLa regulación lineal, asegura una tensión limpia sin ruido eléctrico para el LED y simplifica el circuito, aprovechando que la caída de tensión (dropout) no es excesiva.",
+    "specifications": "Pack 2S Li-Ion | Salida Tensión Regulada | Carga USB-C",
+    "challenges": "Adaptación mecánica de los contactos (Arandela/Aluminio) y reducción de tamaños.",
+    "results": "Linterna modernizada, recargable y con autonomía extendida.",
+    "id": 1764027532122
+  },
+  {
+    "title": "Diseño y Construcción de Digestor Kjeldahl de 3 Posiciones con Control Individual",
+    "category": "Otro",
+    "technologies": [
+      "Nicrom"
+    ],
+    "date": "2025-04",
+    "images": [
+      "./images/proj_1764026997262_0.jpg",
+      "./images/proj_1764026997262_1.jpg",
+      "./images/proj_1764026997262_2.jpg",
+      "./images/proj_1764026997262_3.jpg",
+      "./images/proj_1764026997262_4.jpg",
+      "./images/proj_1764026997262_5.jpg"
+    ],
+    "symptoms": "Se requería un equipo de laboratorio para realizar el método Kjeldahl (digestión de muestras para análisis de nitrógeno) con capacidad para 3 muestras simultáneas. Requerimientos:\n\nControl de temperatura independiente para cada plaza.\n\nDiseño modular que permita el reemplazo rápido de los elementos calefactores (mantenibilidad).\n\nSoporte para matraces de 800ml.\n\nAislación térmica eficiente para proteger al usuario y la electrónica.",
+    "technicalSheet": "Capacidad: 3 Plazas para balones de 800ml.\n\nElemento Calefactor: Espiral de alambre de Nicrom montado sobre disco de ladrillo refractario.\n\nSoporte de Muestra: Malla de fibra de vidrio con geometría semicircular (adaptable al balón).\n\nAislación: Relleno volumétrico de lana de fibra de vidrio y vainas de alta temperatura para cableado.\n\nControl: Regulación de potencia por corte de fase (Dimmers analógicos) en cajas externas ventiladas.\n\nEstructura: Gabinete metálico con sub-estructura interna de \"chimeneas\" de aluminio para direccionamiento de calor.",
+    "repairProcess": "Modelado: Diseño de la estructura y ensamblaje en SolidWorks para validar dimensiones y flujo de calor.\n\nEstructura: Fabricación de 3 \"chimeneas\" de aluminio internas para contener y dirigir el calor desde la resistencia hacia el balón.\n\nElemento Calefactor: Bobinado manual de resistencias de Nicrom y fijación sobre bases de ladrillo refractario mecanizado.\n\nMontaje y Aislación: Instalación de las resistencias en la base de las chimeneas. Colocación de mallas de fibra de vidrio superiores para el asiento de los matraces. Relleno total del volumen vacío con lana de vidrio.\n\nIteración / Solución de Fallo: Durante las pruebas iniciales, se detectó carbonización del aislante de los cables de alimentación debido a la radiación térmica del ladrillo refractario hacia abajo.\n\nSolución: Se rediseñó el montaje agregando una capa de fibra de vidrio debajo del ladrillo refractario para desacoplar térmicamente las conexiones eléctricas de la fuente de calor.\n\nAcabado: Pintura del gabinete, montaje de cajas de control externas y conexión de sistema de extracción de gases (vidriería).",
+    "details": "El uso de ladrillo refractario como base permite una inercia térmica estable, mientras que las chimeneas de aluminio concentran el calor hacia la muestra, mejorando la eficiencia energética respecto a mantas calefactoras convencionales. Las conexiones se realizaron con borneras cerámicas y cables con vaina de fibra de vidrio para soportar el entorno de alta temperatura.",
+    "specifications": "3x Balones 800ml | Resistencias Nicrom | Aislación Full Fibra de Vidrio.",
+    "challenges": "Gestión térmica del cableado (carbonización por radiación directa).\nGestión térmica en general, 900W de energía a casi 400 Grados.",
+    "results": "Equipo operativo, mantenimiento simplificado y alta eficiencia térmica.",
+    "id": 1764026997262
+  },
+  {
+    "title": "Desarrollo de Etapa de Potencia y Control PID para Determinador de Punto de Fusión",
+    "category": "Circuitos Analógicos",
+    "technologies": [
+      "MOSFET de Potencia",
+      "Control PID",
+      "Modulación PWM",
+      "Termocupla",
+      "Diseño de PCB"
+    ],
+    "date": "2025-06",
+    "images": [
+      "./images/proj_1763938682057_0.jpg",
+      "./images/proj_1763938682057_1.jpg"
+    ],
+    "symptoms": "Se disponía de un microscopio óptico equipado con una platina calefactora resistiva, pero carecía de un sistema de control de temperatura preciso. La operación manual impedía determinar el punto de fusión exacto de las muestras debido a la inercia térmica y la falta de linealidad en el calentamiento, resultando en mediciones erróneas y baja repetibilidad.",
+    "technicalSheet": "Controlador: Delta DTB4848RR (Configuración PID).Sensor: Termocupla Tipo J (Hierro-Constantán).Actuador: MOSFET IRF630 (N-Channel, 200V, 9A).Alimentación de Carga: 24V DC (Fuente Switching Industrial).Señal de Disparo: PWM (Amplitud 10V en V_GS).",
+    "repairProcess": "Ingeniería de Integración y Potencia:Se diseñó una interfaz híbrida acoplando un controlador industrial a una etapa de potencia a medida.\nTopología del Driver: Se implementó un interruptor de lado bajo (Low-Side Switch) utilizando el MOSFET IRF630. Dado que el IRF630 no es un dispositivo Logic-Level, se aseguró una tensión de compuerta V_GS de 10V. Esto garantiza la operación en la región de saturación (óhmica), minimizando la R_DS(on) a valores cercanos a 0.4Ohms y reduciendo la disipación térmica durante la conducción.\nEstrategia de Control: Se configuró el controlador Delta DTB4848 para realizar la lectura directa de la termocupla Tipo J y procesar el algoritmo PID. La salida del controlador modula el ancho de pulso (PWM), regulando la energía eficaz entregada por la fuente de 24V a la resistencia.\nMontaje y Fabricación: El circuito del driver se construyó sobre placa universal perforada, optimizando el ruteo de las pistas de alta corriente con aportación de estaño para soportar la carga y separando la tierra de potencia de la señal de control para evitar bucles de masa.",
+    "details": "La elección del IRF630 permite que se pueda aprovechar la totalidad del elemento calefactor, sin preocuparse de sobrecalentamiento en el transistor. \nEl sistema permite ahora rampas de calentamiento suaves y sostenimiento exacto de la temperatura.",
+    "specifications": "Señal Gate: 10V PWM | Sensor: Termocupla | Actuador: MOSFET.",
+    "challenges": "Acondicionamiento de señal de bajo nivel (termocupla) y minimización de ruido de conmutación.",
+    "results": "Control estable de temperatura con error de estado estacionario tendiente a cero.",
+    "id": 1763938682057
+  },
+  {
+    "title": "Reparación Integral y Rediseño de Interfaz HMI - Cromatógrafo HPLC Konik A5000",
+    "category": "Circuitos Analógicos",
+    "technologies": [
+      "Electrónica Digital",
+      "Instrumentación",
+      "Diseño de Producto"
+    ],
+    "date": "2025-10",
+    "images": [
+      "./images/proj_1763937839324_0.jpg",
+      "./images/proj_1763937839324_1.jpg",
+      "./images/proj_1763937839324_2.jpg",
+      "./images/proj_1763937839324_3.jpg"
+    ],
+    "symptoms": "El equipo se encontraba inoperativo. La etapa de potencia (bombas hidráulicas y elementos calefactores) encendía correctamente, pero la etapa de control lógico y la Interfaz Hombre-Máquina (HMI) no daban respuesta, impidiendo cualquier configuración o uso del equipo.",
+    "technicalSheet": "Interfaz de Visualización: Doble banco de displays LED de 7 segmentos (Multiplexados) para monitoreo de Tiempo y Datos (Presión/Flujo).\n\nInterfaz de Entrada: Teclado matricial de membrana de 20 teclas (Numérico + Funciones específicas: FLOW, TEMP, PRESS).",
+    "repairProcess": "Proceso de Diagnóstico y Reparación\n\nInspección Visual y Análisis de Daños: Se realizó el despiece completo del equipo. Se detectaron daños físicos severos (carbonización) en los pines de la etapa de comunicación y resistencias limitadoras abiertas, lo que sugirió una falla catastrófica por conexión errónea externa o cortocircuito.\n\nReconstrucción de Pistas: Se sanearon las conexiones dañadas en la PCB, reemplazando los pines carbonizados mediante soldadura directa de cableado para asegurar la continuidad.\n\nDiagnóstico Lógico (HMI): Tras la reparación física, se rastreó la falla hacia la lógica de control. Se identificaron y reemplazaron dos circuitos integrados dañados: un SN7442 (Decodificador BCD a Decimal) y un ULN2003 (Array de transistores Darlington), responsables del manejo de los displays y la multiplexación.\n\nRediseño de Teclado Matricial: Aunque la lógica se recuperó, el teclado de membrana original presentaba daños irreversibles en sus contactos. Se procedió a realizar ingeniería inversa de la matriz para diseñar y fabricar un teclado totalmente nuevo, incluyendo la electrónica de los pulsadores, el diseño gráfico del panel frontal y la adaptación mecánica al chasis original.",
+    "details": "Equipo: Unidad de Control y Bombeo para HPLC (Cromatografía Líquida de Alta Resolución).\n\nModelo: Konik KNK-500 Series A.\n\nInterfaz de Visualización: Doble banco de displays LED de 7 segmentos (Multiplexados) para monitoreo de Tiempo y Datos (Presión/Flujo).\n\nInterfaz de Entrada: Teclado matricial de membrana de 20 teclas (Numérico + Funciones específicas: FLOW, TEMP, PRESS).",
+    "specifications": "-",
+    "challenges": "Realizar la interfaz HMI, sobretodo la parte visual",
+    "results": "Se restableció la funcionalidad completa del cromatógrafo, validando tanto la comunicación interna como la respuesta de los actuadores y la nueva interfaz de usuario. El equipo volvió a estar operativo con una estética renovada y funcional.",
+    "id": 1763937839324
+  },
+  {
+    "title": "Diseño y Prototipado de Manta Calefactora Flexible",
+    "category": "Otro",
+    "technologies": [
+      "Nicrom",
+      "Fibra de Vidrio",
+      "Aislamiento Térmico",
+      "Calefacción Resistiva",
+      "Prototipado"
+    ],
+    "date": "2025-07",
+    "images": [
+      "./images/proj_1763935968024_0.jpg",
+      "./images/proj_1763935968024_1.jpg",
+      "./images/proj_1763935968024_2.jpg",
+      "./images/proj_1763935968024_3.jpg",
+      "./images/proj_1763935968024_4.jpg"
+    ],
+    "symptoms": "Necesidad de aplicar calor controlado en superficies con geometría irregular o cilíndrica (ej. columnas de cromatografía) donde las placas rígidas no son viables. Se requiere un elemento flexible, capaz de soportar altas temperaturas y con aislamiento eléctrico robusto.",
+    "technicalSheet": "Elemento Activo: 13 metros de Nicrom (Ø 0.5mm).\n\nResistencia Total: 73 Ohms.\n\nPotencia de Diseño (Ideal): 660W @ 220V (3A).\n\nPotencia Operativa (Limitada): 400W (2.2A) para control térmico mediante controlador dimmer.\n\nAislamiento Dieléctrico: Vaina trenzada de fibra de vidrio (resistente a >400°C).\n\nAislamiento Dieléctrico exterior: Manta de fibra de vidrio (resistente a >400°C).\n\nSoporte Estructural: Malla reticulada de fibra de vidrio.\n\nTopología: Configuración en serpentina (zigzag) para flexibilidad mecánica.",
+    "repairProcess": "1. Cálculo Teórico: Se diseñó una carga resistiva de 73Ω utilizando 13m de alambre Nicrom de 0.5mm, proyectando una potencia ideal de 660W (3A). \n2. Manufactura: Encapsulado del conductor en vainas de fibra de vidrio y tejido sobre malla estructural en patrón de serpentina. \n3. Pruebas de Carga: Durante los ensayos se detectó que la potencia nominal (660W) generaba temperaturas excesivas en los puntos de cruce (hotspots). \n4. Ajuste Operativo: Se limitó la corriente a 2.2A (400W), logrando estabilizar la temperatura máxima en 400°C en los puntos críticos. \n5. Validación Final: Prueba de estabilidad térmica exitosa a 300W, alcanzando 270°C constantes sobre el objeto de prueba.",
+    "details": "El diseño prioriza la seguridad operativa mediante un doble aislamiento físico. \nLa flexibilidad del tejido permite que la manta se adapte a radios de curvatura pequeños sin estresar mecánicamente al conductor interno.",
+    "specifications": "Alta Flexibilidad | Materiales Ignífugos | Distribución Homogénea",
+    "challenges": "Evitar \"hotspots\" (puntos calientes) y garantizar aislamiento entre espiras adyacentes al flexionar la manta",
+    "results": "Prototipo funcional validado a 400W. Se determinó que para futuras iteraciones se optimizará usando alambre de 0.4mm (110Ω) para reducir la densidad de potencia sin limitar externamente.",
+    "id": 1763935968024
+  },
+  {
+    "title": "Reparación Fuente ATX",
+    "category": "Circuitos Analógicos",
+    "technologies": [
+      "Fuente Switching"
+    ],
+    "date": "2025-11",
+    "images": [
+      "./images/proj_1763930405005_0.jpg",
+      "./images/proj_1763930405005_1.jpg",
+      "./images/proj_1763930405005_2.jpg"
+    ],
+    "symptoms": "En la inspección inicial en banco de pruebas, la fuente encendía al puentear PS_ON# (cable verde) a GND, pero los voltajes de salida eran erráticos, por debajo del límite inferior del estándar ATX ±5%, lo que provocaba la activación de las protecciones UVP (Under Voltage Protection)",
+    "technicalSheet": "Tipo de Dispositivo: Fuente de Poder Conmutada (SMPS) ATX estándar.\n\nEtapa Afectada: Etapa primaria de transformación.\n\nMediciones Iniciales (Estado de Falla):\n\n+5VPS_ON (Standby): 3.1V (Estable).\n\n+12V (Sin carga): 0V\n\n+5V (Sin carga): 0V\n\nComponente Sospechoso: Transistor FET de la etapa primaria, ya que se tenía señal de standy pero no señales de potencia al encender la fuente.\nnspección Visual: No se observaron componentes quemados, capacitores hinchados ni daño en el CI controlador PWM.\n\nTransistores de Conmutación (Primario): Se midieron los dos MOSFETs de potencia principales montados en el disipador primario.\n\nMOSFET 1: Mediciones normales en modo diodo.\n\nMOSFET 2: Se detectó CONTINUIDAD TOTAL (Cortocircuito directo, 0Ω) entre los pines Drain (Drenador) y Source (Surtidor), y también una resistencia muy baja hacia Gate (Compuerta). Este componente estaba destruido internamente.",
+    "repairProcess": "Proceso de Reparación:\n\nConfirmación de la Falla: Se procedió a desoldar y extraer el MOSFET sospechoso del circuito. La medición fuera de la placa confirmó el cortocircuito interno irreversible entre sus tres terminales.\n\nVerificación del Entorno: Antes de colocar el repuesto, se revisaron minuciosamente los componentes aledaños, especialmente las resistencias y diodos del circuito de disparo (Gate drive) de ese transistor. Milagrosamente, todo lo demás, incluido el controlador PWM, medía correctamente. La falla se contuvo solo en el transistor de potencia.\n\nReemplazo: Se instaló un MOSFET nuevo de características idénticas o superiores en voltaje y corriente al original dañado. Se aseguró un buen contacto térmico con el disipador usando pasta térmica nueva y el aislante correspondiente.\n\nPrueba de Seguridad (Lámpara Serie): Paso crítico. Se conectó la fuente a la red utilizando una lámpara serie de 100W como limitador de corriente.\n\nResultado: La lámpara dio un destello inicial (carga de capacitores) y se apagó casi por completo (filamento apenas rojizo). Esto indicó que el cortocircuito grave había desaparecido.\n\nPrueba Funcional: Con la lámpara serie aún conectada, se midió el voltaje de +5VSB (presente y estable). Se realizó el puente de encendido (PS_ON# a GND). La fuente arrancó suavemente y el ventilador comenzó a girar sin que la lámpara serie se encendiera con fuerza.",
+    "details": "La falla fue ocasionada por baja tensión de suministro, causando que el PWM genere trenes más anchos, lo que causó mayor potencia disipada en el MOSFET, causando que se quemara.",
+    "specifications": "Falla de semiconductor de potencia en el lado primario (High Side Switch). Diagnóstico por medición en frío.",
+    "challenges": "El desafío principal fue confiar en el diagnóstico de que solo el MOSFET estaba dañado, ya que es raro que no se quemen componentes asociados. La prueba con lámpara serie fue fundamental para confirmar esto con seguridad antes de conectar directo a la red.",
+    "results": "El reemplazo del transistor dañado devolvió la vida a la fuente. La imagen de portada muestra la prueba final exitosa, con el riel de +12V entregando unos saludables y estables 11.80V con carga nominal.",
+    "id": 1763930405005
+  }
+]
