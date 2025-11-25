@@ -153,7 +153,6 @@
       const loadProjects = async () => {
         setIsLoading(true);
         try {
-          // Agregamos timestamp para evitar cache al recargar
           const response = await fetch(DATA_FILE_URL + '?t=' + Date.now());
           if (!response.ok) throw new Error('No se pudo cargar el archivo de datos.');
           const data = await response.json();
@@ -292,9 +291,9 @@
                   <button onClick={() => setViewingProject(null)} className="text-nano-muted hover:text-nano-accent transition-colors p-2 bg-nano-bg/50 rounded-full hover:bg-nano-card border border-transparent hover:border-nano-accent/30 flex-shrink-0 absolute top-6 right-6"><svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg></button>
                 </div>
 
-                <div className="flex-grow overflow-hidden bg-nano-bg/80">
-                  <div className="h-full grid grid-cols-1 lg:grid-cols-12 gap-0">
-                    <div className="lg:col-span-5 h-full p-6 sm:p-8 border-r border-nano-border/50 flex flex-col justify-center overflow-hidden bg-nano-bg/30">
+                <div className="flex-grow overflow-y-auto lg:overflow-hidden bg-nano-bg/80">
+                  <div className="h-auto lg:h-full grid grid-cols-1 lg:grid-cols-12 gap-0">
+                    <div className="lg:col-span-5 h-auto lg:h-full p-6 sm:p-8 border-r border-nano-border/50 flex flex-col justify-center overflow-hidden bg-nano-bg/30">
                       <div className="space-y-6 w-full">
                         {viewingProject.images.length > 0 ? (
                           <>
@@ -323,7 +322,7 @@
                       </div>
                     </div>
 
-                    <div className="lg:col-span-7 h-full p-6 sm:p-10 overflow-y-auto scrollbar-thin flex flex-col space-y-12 bg-nano-bg/20 relative">
+                    <div className="lg:col-span-7 h-auto lg:h-full p-6 sm:p-10 lg:overflow-y-auto scrollbar-thin flex flex-col space-y-12 bg-nano-bg/20 relative">
                       <div className="space-y-10 flex-grow">
                           <div>
                               <h4 className="text-nano-muted uppercase text-xs font-bold tracking-widest mb-4 font-mono border-b border-nano-border/30 pb-2">Tecnologías Aplicadas</h4>
