@@ -1,5 +1,58 @@
 [
   {
+    "title": "Dispositivo cromatografía TLC con Modulación PWM buck para LEDs UV (385nm/420nm).",
+    "category": "Circuitos Analógicos",
+    "technologies": [
+      "NE555P",
+      "LM358",
+      "MOSFET IRFZ44N",
+      "Inductor 220uH",
+      "Resistencia Shunt 0.22"
+    ],
+    "date": "2026-04",
+    "images": [
+      "./images/proj_1775426114029_0_1775426201967.jpg",
+      "./images/proj_1775426114029_1_1775426201975.jpg",
+      "./images/proj_1775426114029_2_1775426201982.jpg",
+      "./images/proj_1775426114029_3_1775426201987.jpg",
+      "./images_1/proj_1775426114029_4_1775426201994.jpg"
+    ],
+    "symptoms": "Necesidad de una fuente de corriente constante de 350mA para LEDs de alta potencia utilizados en experimentos de fotosíntesis nocturna. Requisitos: Control de intensidad ajustable mediante PWM, frecuencia de conmutación superior a 60kHz para minimizar rizado, lazo de control cerrado para compensar la deriva térmica de los LEDs y mantenimiento de la integridad espectral (evitando materiales que absorban UV).",
+    "technicalSheet": "Alimentación: 12V DC.\n\nCorriente de Salida: 350mA (Estabilizada).\n\nFrecuencia de Trabajo: 60kHz - 100kHz (Ajustable por red RC).\n\nTopología de Control: Modulación por ancho de pulso (PWM) mediante intervención del Pin 5 (Control Voltage) del NE555.\n\nRetroalimentación: Lectura diferencial sobre resistencia shunt de 0.22Ω.\n\nEficiencia Radiante: ~60% (WPE) en el espectro UV-A.",
+    "repairProcess": "Dimensionamiento del Astable: Cálculo de la red de tiempo (Ra=10k, Rb=1k, C=1nF) para romper la barrera del 50% de Duty Cycle y alcanzar el 95% de potencia efectiva.\n\nDiseño del Lazo de Control: Configuración del LM358 como comparador/amplificador de error para modular la tensión de referencia interna del 555, logrando una regulación de corriente dinámica.\n\nOptimización del Gate Drive: Implementación de resistencia de Gate (100 ohms) y desacople local con capacitores cerámicos de 100nF para asegurar flancos de subida limpios en el IRFZ44N.\n\nAcondicionamiento de Señal: Integración de un filtro RC pasabajos en la realimentación para filtrar el ruido de conmutación del inductor y estabilizar la referencia del operacional.\n\nConfiguración Óptica: Cálculo de la zona de mezcla espectral a 12cm de distancia vertical para homogeneizar las longitudes de onda de 385nm y 420nm sin necesidad de difusores plásticos.",
+    "details": "Se utilizó el NE555 y no un driver específico para así simplificar el proceso de reparación en caso de falla.",
+    "specifications": "12V DC | 350mA Constante | PWM >60kHz | Control en Lazo Cerrado",
+    "challenges": "Superar la limitación de Duty Cycle inherente a la configuración estándar del 555. Mitigación de ruido de alta frecuencia en señales de control de baja tensión. Gestión de la paralaje óptica de los LEDs para asegurar mezcla espectral uniforme.",
+    "results": "Driver operativo con estabilidad de corriente del +/- 2%. Control lineal de potencia sin parpadeo. Mezcla espectral verificada a 12cm, garantizando condiciones óptimas para el estudio de nutrientes y fotosíntesis nocturna. Adaptadores para tubos de 254nm y 365nm",
+    "id": 1775426114029
+  },
+  {
+    "title": "Diseño y Ensamblaje de Fotobiorreactor RGB",
+    "category": "Microcontroladores",
+    "technologies": [
+      "ESP32",
+      "MOSFET AOP605 (Canal N)",
+      "Tira LED RGB 5050 (12V)",
+      "Impresión 3D (PLA)"
+    ],
+    "date": "2026-02",
+    "images": [
+      "./images_1/proj_1775425656967_0_1775426201997.jpg",
+      "./images_1/proj_1775425656967_1_1775426201997.jpg",
+      "./images_1/proj_1775425656967_2_1775426201999.jpg",
+      "./images_1/proj_1775425656967_3_1775426201999.jpg",
+      "./images_1/proj_1775425656967_4_1775426202001.jpg"
+    ],
+    "symptoms": "Necesidad de diseño de un reactor cilíndrico para fotocatálisis. Requisitos: iluminación uniforme de 360 grados, control independiente de intensidad por longitud de onda (R, G, B), compatibilidad estructural con agitador magnético inferior y mantenimiento de temperatura interna por debajo de los 60°C (límite del PLA)",
+    "technicalSheet": "Alimentación principal: 12V DC.\n\nLógica de control: 3.3V (ESP32).\n\nIluminación: Tira LED 5050 12V (Aprox. 6W por canal).\n\nControl de potencia: PWM directo sobre compuertas de transistores MOSFET Canal N.\n\nGeometría de reacción: Tubo PVC Ø interno 106mm, altura activa 150mm.",
+    "repairProcess": "Cálculo y dimensionamiento del cilindro perimetral (15 vueltas exactas de tira LED).\n\nDiseño de la etapa de potencia utilizando exclusivamente el Canal N del encapsulado AOP605 con conexión directa GPIO-Gate y resistencia pull-down.\n\nDiseño de cámara plena y trampa de luz en las salidas de ventilación superiores impresas en 3D.\n\nValidación de estrés térmico continuo (Estabilización en 42°C bajo temperatura ambiente de 26°C).",
+    "details": "Se desarrollaron soportes antideslizantes inyectando adhesivo B7000 sobre la base de PLA y curándolos sobre una superficie de polipropileno para lograr compresión sin adherencia a la mesa de trabajo.",
+    "specifications": "Control ESP32 | Iluminación RGB 5050 | Driver PWM Canal N",
+    "challenges": "Contención de fugas de luz mediante diseño mecánico.",
+    "results": "Reactor operativo, térmicamente estable y seguro para la estructura de PLA. Distribución radial de fotones simétrica. Operación concurrente con agitación magnética exitosa.",
+    "id": 1775425656967
+  },
+  {
     "title": "Diseño de Camisa Calefactora (Banda) de Mica/Nicrom para Reactor Químico",
     "category": "Circuitos Analógicos",
     "technologies": [
