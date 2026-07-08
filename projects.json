@@ -1,5 +1,51 @@
 [
   {
+    "title": "Sistema de Adquisición de Datos (DAQ) para Cromatógrafo Varian 3400CX",
+    "category": "Sistemas Embebidos",
+    "technologies": [
+      "ESP32",
+      "ADC 24BITS",
+      "Python"
+    ],
+    "date": "2026-07",
+    "images": [
+      "./images_1/proj_1783481540020_0_1783481540144.jpg",
+      "./images_1/proj_1783481540020_1_1783481540148.jpg",
+      "./images_1/proj_1783481540020_2_1783481540153.jpg",
+      "./images_1/proj_1783481540020_3_1783481540155.jpg"
+    ],
+    "symptoms": "El cromatógrafo Varian 3400CX conserva el tren analógico (horno, inyector, detector FID) en buen estado, pero su electrónica original de adquisición e integración estaba obsoleta y sin soporte, imposibilitando registrar y procesar la señal del detector. Se requería un front-end de adquisición que digitalizara la salida analógica del detector con resolución y velocidad suficientes para cromatografía capilar, sin depender de hardware propietario descontinuado.",
+    "technicalSheet": "Adquisición: ADS1256, ADC de 24 bits, hasta 30kSPS, PGA programable (x1 a x64) por firmware.\nControl: ESP32 como maestro SPI del ADS1256 y puente de comunicación serie hacia la PC.\nVariante de dos canales: control bidireccional independiente de PGA por canal, permitiendo balancear rango dinámico entre detectores o señales de referencia.\nSoftware: aplicación Python con interfaz gráfica, detección automática de puerto COM, empaquetada con PyInstaller y compilada sobre Python 3.8 para asegurar compatibilidad con Windows 7 y 10.\nAdicionales: Se tuvo que aislar mediante un aislador magnético (Adum) el puerto usb (datos) de la alimentación, esto para evitar ruidos y loops a tierra.\n",
+    "repairProcess": "Diseño de firmware ESP32 para manejo de la interfaz SPI del ADS1256, incluyendo configuración de PGA, tasa de muestreo y sincronización de lectura continua sin pérdida de muestras.\nDesarrollo de la GUI en Python con detección automática de puerto COM (evitando configuración manual por parte del usuario) y visualización en tiempo real del cromatograma.\nImplementación de exportación de cromatogramas en un formato compatible con OpenChrom, incluyendo saneamiento (sanitización) del nombre y contenido de archivo para evitar caracteres y estructuras que el importador de OpenChrom rechaza.\nEmpaquetado del ejecutable con PyInstaller, fijando la build a Python 3.8 para mantener compatibilidad con equipos de laboratorio corriendo Windows 7.",
+    "details": "Se desarrolló en paralelo una herramienta de integración de picos (basada en PyQtGraph) para post-procesar los cromatogramas generados.\n",
+    "specifications": "ESP32 + ADS1256 24-bit | PGA x1-x64 | Exportación compatible OpenChrom | GUI Python (Win7/Win10)",
+    "challenges": "Lograr una adquisición continua sin pérdida de muestras a la tasa de trabajo del ADS1256. Definir un protocolo serie robusto que separe datos y comandos sin colisiones. Garantizar compatibilidad del ejecutable con Windows 7 pese a las restricciones de librerías modernas de Python. Sanitizar y encontrar los formatos aceptados para la salida para que sea aceptada sin errores por el importador de OpenChrom.",
+    "results": "Sistema de adquisición funcional en reemplazo completo del integrador original del Varian 3400CX, con exportación de cromatogramas compatible con OpenChrom. Variante de dos canales operativa con control remoto de ganancia por canal.",
+    "id": 1783481540020
+  },
+  {
+    "title": "Desarrollo de equipo de espectroscopía de Impedancia (EIS)",
+    "category": "Sistemas Embebidos",
+    "technologies": [
+      "Python",
+      "C++ (ESP32)",
+      "Front-End Analógico AD5940"
+    ],
+    "date": "2026-05",
+    "images": [
+      "./images_1/proj_1780105578786_0_1780105773324.jpg",
+      "./images_1/proj_1780105578786_1_1780105773326.jpg"
+    ],
+    "symptoms": "Se requería desarrollar un potenciostato destinado a Espectroscopía de Impedancia Electroquímica (EIS), tanto el software de control en PC (HMI) como el firmware de adquisición.\nInterfaz gráfica moderna, autoajustable y responsiva.\nVisualización en tiempo real de diagramas de Nyquist y Bode.\nComunicación USB asíncrona a prueba de desconexiones y reseteos de hardware.\nAlgoritmo de autorango en hardware (ESP32/AD5940) capaz de evitar la saturación del ADC ante muestras con alta impedancia o ruido.",
+    "technicalSheet": "Software (PC): Python 3, UI con Tkinter, gráficos incrustados con Matplotlib, exportación automatizada a Excel (.xlsx) vía openpyxl.\nFirmware (Hardware): C++ sobre ESP32, controlando el Analog Front-End AD5940.\nComunicación: Serial ejecutada en un hilo secundario para no bloquear la interfaz gráfica.\nFunciones de Medición: Barridos de frecuencia (EIS) logarítmicos, control de amplitud (PGA/DAC), Bias, Zero y cálculo de Rs/Rct.",
+    "repairProcess": "1. Diseño de Arquitectura Software: Se implementó un modelo multihilo en Python. Un hilo secundario lee continuamente el puerto serie, parsea los flujos de datos (frecuencia, módulo, fase, componentes reales e imaginarios) y delega la actualización gráfica al hilo principal para evitar colisiones en la UI.\n2. Sincronización y Handshake: Se desarrolló una máquina de estados para la conexión USB. Al conectar, el software inicia un timeout de 5 segundos a la espera de la bandera 'HELPSTAT_READY' del ESP32, haciendo al sistema invulnerable a reseteos físicos o conexiones de periféricos erróneos.\n3. Optimización del Firmware (C++): Se escribió el algoritmo de autorango del AD5940. Se implementó un guardarraíl estricto basado en los límites de frecuencia de corte dictados por la capacitancia de compensación del TIA. Se añadió una trampa lógica anti-oscilación que intercepta los rebotes del amplificador y fuerza la captura de mediciones con baja SNR antes que permitir el recorte de la señal.\n4. Interfaz Gráfica y Exportación: Se diseñó una UI plana, agrupada por bloques lógicos y estiramiento dinámico. Al concluir el ensayo, un algoritmo recupera los parámetros de las celdas directamente del monitor de eventos y compila un reporte Excel con múltiples hojas por ciclo, anexando las gráficas en alta resolución.",
+    "details": "En instrumentación de EIS, es preferible procesar matemáticamente una señal con baja relación señal/ruido que una señal recortada (saturada), ya que el recorte destruye el análisis de Fourier introduciendo armónicos irreales. El firmware garantiza esto al abortar la búsqueda de ganancia óptima si detecta oscilación.",
+    "specifications": "HMI Python | Firmware ESP32/AD5940 | Autorango Anti-Saturación | Gráficos Tiempo Real.",
+    "challenges": "Estabilizar el amplificador transimpedancia del AD5940 en el límite de las altas frecuencias gestionando correctamente la capacitancia parásita y las proyecciones de voltaje.",
+    "results": "Sistema completamente estable e integrado. La HMI simplifica la configuración de ensayos electroquímicos complejos, previene errores de rango dinámico mediante alertas pre-calculadas, y automatiza el resguardo de datos en formatos estandarizados para investigación.",
+    "id": 1780105578786
+  },
+  {
     "title": "Dispositivo cromatografía TLC con Modulación PWM buck para LEDs UV (385nm/420nm).",
     "category": "Circuitos Analógicos",
     "technologies": [
@@ -64,11 +110,11 @@
     ],
     "date": "2024-09",
     "images": [
-      "./images/proj_1764028842571_0.jpg",
-      "./images/proj_1764028842571_1.jpg",
-      "./images/proj_1764028842571_2.jpg"
+      "./images_1/proj_1764028842571_0_1780105773329.jpg",
+      "./images_1/proj_1764028842571_1_1780105773331.jpg",
+      "./images_1/proj_1764028842571_2_1780105773333.jpg"
     ],
-    "symptoms": "Se requería un sistema de calentamiento externo para un reactor químico cilíndrico de laboratorio. Requerimientos:\n\nElevada densidad de potencia (aprox. 500W) en un espacio reducido.\n\nTransferencia térmica eficiente por contacto directo con las paredes del reactor.\n\nAislación eléctrica robusta capaz de soportar altas temperaturas operativas.\n\nRegulación de potencia variable para controlar la rampa de calentamiento.",
+    "symptoms": "Se requería un sistema de calentamiento externo para un reactor químico cilíndrico de laboratorio. \nRequerimientos:\nElevada densidad de potencia (aprox. 500W) en un espacio reducido.\n\nTransferencia térmica eficiente por contacto directo con las paredes del reactor.\n\nAislación eléctrica robusta capaz de soportar altas temperaturas operativas.\n\nRegulación de potencia variable para controlar la rampa de calentamiento.",
     "technicalSheet": "Tipo: Resistencia de Banda (Band Heater) tipo Sándwich.\n\nPotencia Nominal: 500W (Potencia efectiva medida: ~450W).\n\nElemento Resistivo: Cinta/Alambre de Nicrom.\n\nDieléctrico/Aislante: Láminas de Mica mineral (alta rigidez dieléctrica y estabilidad térmica).\n\nCarcasa: Aluminio (para distribución uniforme del calor y sujeción mecánica).\n\nControl: Lazo abierto mediante Dimmer (recorte de fase) + Monitoreo digital independiente.",
     "repairProcess": "Diseño del Núcleo: Se configuró un \"sándwich\" de materiales.\n\nCapa interna: Lámina de mica en contacto con el cilindro del reactor (aislación eléctrica, conducción térmica).\n\nNúcleo: Bobinado plano de alambre de Nicrom, calculado para 500W.\n\nCapa externa: Lámina de mica superior para cerrar el aislamiento.\n\nEncapsulado: Todo el conjunto se prensó dentro de una carcasa de aluminio curvada a medida. El aluminio cumple la doble función de proteger mecánicamente la mica (que es frágil) y homogeneizar la temperatura alrededor del reactor para evitar puntos calientes.\n\nSistema de Control:\n\nSe implementó una caja blanca con un Dimmer para regular la tensión eficaz entregada a la resistencia (0-100%).\n\nSe añadió una caja negra con un display digital conectado a una termocupla/sensor para monitorear la temperatura del proceso en tiempo real (feedback visual para el operador).\n\nMontaje: El sistema se montó sobre un agitador magnético, permitiendo calentar y mezclar simultáneamente.",
     "details": "La construcción tipo \"sándwich\" con mica permite alcanzar temperaturas mucho más altas que los aislamientos plásticos o de silicona. La discrepancia entre los 500W teóricos y los 450W reales suele deberse a la variación de la resistencia del Nicrom con la temperatura o a caídas de tensión en la red, pero 450W es una potencia excelente para ese volumen de reactor.",
@@ -173,7 +219,7 @@
     ],
     "symptoms": "Se disponía de un microscopio óptico equipado con una platina calefactora resistiva, pero carecía de un sistema de control de temperatura preciso. La operación manual impedía determinar el punto de fusión exacto de las muestras debido a la inercia térmica y la falta de linealidad en el calentamiento, resultando en mediciones erróneas y baja repetibilidad.",
     "technicalSheet": "Controlador: Delta DTB4848RR (Configuración PID).Sensor: Termocupla Tipo J (Hierro-Constantán).Actuador: MOSFET IRF630 (N-Channel, 200V, 9A).Alimentación de Carga: 24V DC (Fuente Switching Industrial).Señal de Disparo: PWM (Amplitud 10V en V_GS).",
-    "repairProcess": "Ingeniería de Integración y Potencia:Se diseñó una interfaz híbrida acoplando un controlador industrial a una etapa de potencia a medida.\nTopología del Driver: Se implementó un interruptor de lado bajo (Low-Side Switch) utilizando el MOSFET IRF630. Dado que el IRF630 no es un dispositivo Logic-Level, se aseguró una tensión de compuerta V_GS de 10V. Esto garantiza la operación en la región de saturación (óhmica), minimizando la R_DS(on) a valores cercanos a 0.4Ohms y reduciendo la disipación térmica durante la conducción.\nEstrategia de Control: Se configuró el controlador Delta DTB4848 para realizar la lectura directa de la termocupla Tipo J y procesar el algoritmo PID. La salida del controlador modula el ancho de pulso (PWM), regulando la energía eficaz entregada por la fuente de 24V a la resistencia.\nMontaje y Fabricación: El circuito del driver se construyó sobre placa universal perforada, optimizando el ruteo de las pistas de alta corriente con aportación de estaño para soportar la carga y separando la tierra de potencia de la señal de control para evitar bucles de masa.",
+    "repairProcess": "Ingeniería de Integración y Potencia: Se diseñó una interfaz híbrida acoplando un controlador industrial a una etapa de potencia a medida.\nTopología del Driver: Se implementó un interruptor de lado bajo (Low-Side Switch) utilizando el MOSFET IRF630. Dado que el IRF630 no es un dispositivo Logic-Level, se aseguró una tensión de compuerta V_GS de 10V. Esto garantiza la operación en la región de saturación (óhmica), minimizando la R_DS(on) a valores cercanos a 0.4Ohms y reduciendo la disipación térmica durante la conducción.\nEstrategia de Control: Se configuró el controlador Delta DTB4848 para realizar la lectura directa de la termocupla Tipo J y procesar el algoritmo PID. La salida del controlador modula el ancho de pulso (PWM), regulando la energía eficaz entregada por la fuente de 24V a la resistencia.\nMontaje y Fabricación: El circuito del driver se construyó sobre placa universal perforada, optimizando el ruteo de las pistas de alta corriente con aportación de estaño para soportar la carga y separando la tierra de potencia de la señal de control para evitar bucles de masa.",
     "details": "La elección del IRF630 permite que se pueda aprovechar la totalidad del elemento calefactor, sin preocuparse de sobrecalentamiento en el transistor. \nEl sistema permite ahora rampas de calentamiento suaves y sostenimiento exacto de la temperatura.",
     "specifications": "Señal Gate: 10V PWM | Sensor: Termocupla | Actuador: MOSFET.",
     "challenges": "Acondicionamiento de señal de bajo nivel (termocupla) y minimización de ruido de conmutación.",
